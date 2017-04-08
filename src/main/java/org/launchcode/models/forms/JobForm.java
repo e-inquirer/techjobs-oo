@@ -7,6 +7,7 @@ import org.launchcode.models.PositionType;
 import org.launchcode.models.data.JobData;
 
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 
@@ -27,6 +28,21 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+    //Location ID field
+    @NotNull
+    private int locationId;
+    private String location;
+
+    //Position ID field
+    @NotNull
+    private int positionTypeId;
+    private String positionType;
+
+    //Core Competency ID field
+    @NotNull
+    private int coreCompetencyId;
+    private String coreCompetency;
+
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -42,7 +58,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
-
+        locations = jobData.getLocations().findAll();
+        positionType = jobData.getPositionTypes().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
     }
 
     public String getName() {
