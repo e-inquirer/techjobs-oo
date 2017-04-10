@@ -67,6 +67,6 @@ public class JobController {
         model.addAttribute("position", newJob.getPositionType());
         model.addAttribute("skill", newJob.getCoreCompetency());
 
-        return "redirect:/job/?id=" + newJob.getId();
+        return "redirect:/job?id=" + (newJob.getId() - 1);
     }
 }
