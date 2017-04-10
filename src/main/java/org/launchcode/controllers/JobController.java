@@ -25,11 +25,12 @@ public class JobController {
     public String index(Model model, int id) {
 
         // TODO #1 - get the Job with the given ID and pass it into the view
-        model.addAttribute("name", jobData.findAll().get(id).getName());
-        model.addAttribute("employer", jobData.findAll().get(id).getEmployer());
-        model.addAttribute("location", jobData.findAll().get(id).getLocation());
-        model.addAttribute("position", jobData.findAll().get(id).getPositionType());
-        model.addAttribute("skill", jobData.findAll().get(id).getCoreCompetency());
+        Job jobId = jobData.findById(id);
+        model.addAttribute("name", jobId.getName());
+        model.addAttribute("employer", jobId.getEmployer());
+        model.addAttribute("location", jobId.getLocation());
+        model.addAttribute("position", jobId.getPositionType());
+        model.addAttribute("skill", jobId.getCoreCompetency());
 
         return "job-detail";
     }
@@ -67,6 +68,6 @@ public class JobController {
         model.addAttribute("position", newJob.getPositionType());
         model.addAttribute("skill", newJob.getCoreCompetency());
 
-        return "redirect:/job?id=" + (newJob.getId() - 1);
+        return "redirect:/job?id=" + newJob.getId();
     }
 }
